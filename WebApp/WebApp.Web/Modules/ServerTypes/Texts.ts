@@ -74,6 +74,19 @@ namespace WebApp.Texts {
                 export const Username: string;
             }
         }
+
+        namespace MovieDB {
+
+            namespace Movie {
+                export const Description: string;
+                export const MovieId: string;
+                export const ReleaseDate: string;
+                export const Runtime: string;
+                export const Storyline: string;
+                export const Title: string;
+                export const Year: string;
+            }
+        }
     }
 
     export declare namespace Forms {
@@ -180,6 +193,9 @@ namespace WebApp.Texts {
                 User: {},
                 UserPermission: {},
                 UserRole: {}
+            },
+            MovieDB: {
+                Movie: {}
             }
         },
         Forms: {
