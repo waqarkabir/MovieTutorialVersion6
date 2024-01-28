@@ -1,4 +1,4 @@
-﻿using Serenity.ComponentModel;
+using Serenity.ComponentModel;
 using System;
 using System.ComponentModel;
 
@@ -16,5 +16,6 @@ public class MovieColumns
     public string Storyline { get; set; }
     public int Year { get; set; }
     public DateTime ReleaseDate { get; set; }
+    [DisplayName("Runtime in Minutes"), Width(150), AlignRight]
     public int Runtime { get; set; }
 }

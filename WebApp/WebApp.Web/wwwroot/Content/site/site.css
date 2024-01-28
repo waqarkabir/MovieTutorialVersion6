@@ -83,3 +83,12 @@
 .s-PermissionCheckEditor .effective-permission.deny {
   background-image: url(../serenity/images/slash.png);
 }
+
+.s-MovieDB-MovieDialog > .size {
+  width: 650px;
+  height: 550px;
+}
+
+.s-MovieDB-MovieDialog .caption {
+  width: 150px;
+}
