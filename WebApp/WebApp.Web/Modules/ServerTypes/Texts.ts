@@ -79,6 +79,7 @@ namespace WebApp.Texts {
 
             namespace Movie {
                 export const Description: string;
+                export const Kind: string;
                 export const MovieId: string;
                 export const ReleaseDate: string;
                 export const Runtime: string;
