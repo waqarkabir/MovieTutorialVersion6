@@ -14,6 +14,7 @@ namespace WebApp.MovieDB;
 [ServiceLookupPermission("Administration:General")]
 public sealed class MovieRow : Row<MovieRow.RowFields>, IIdRow, INameRow
 {
+    const string jGenre = nameof(jGenre);
     [DisplayName("Movie Id"), Identity, IdProperty]
     public int? MovieId { get => fields.MovieId[this]; set => fields.MovieId[this] = value; }
 
@@ -36,7 +37,14 @@ public sealed class MovieRow : Row<MovieRow.RowFields>, IIdRow, INameRow
     public int? Runtime { get => fields.Runtime[this]; set => fields.Runtime[this] = value; }
 
     [DisplayName("Kind"), NotNull, DefaultValue(MovieKind.Film)]
-    public MovieKind? Kind { get => fields.Kind[this]; set => fields.Kind[this] = value; } 
+    public MovieKind? Kind { get => fields.Kind[this]; set => fields.Kind[this] = value; }
+
+    [DisplayName("Genre"), ForeignKey(typeof(GenreRow)), LeftJoin(jGenre)]
+    [LookupEditor(typeof(GenreRow), InplaceAdd = true, DialogType = "MovieDB.Genre")]
+    public Int32? GenreId { get => fields.GenreId[this]; set => fields.GenreId[this] = value; }
+
+    [DisplayName("Genre"), Expression($"{jGenre}.Name")]
+    public String GenreName { get => fields.GenreName[this]; set => fields.GenreName[this] = value; }
     public class RowFields : RowFieldsBase
     {
         public Int32Field MovieId;
@@ -47,6 +55,8 @@ public sealed class MovieRow : Row<MovieRow.RowFields>, IIdRow, INameRow
         public DateTimeField ReleaseDate;
         public Int32Field Runtime;
         public EnumField<MovieKind> Kind;
+        public Int32Field GenreId;
+        public StringField GenreName;
 
     }
 }

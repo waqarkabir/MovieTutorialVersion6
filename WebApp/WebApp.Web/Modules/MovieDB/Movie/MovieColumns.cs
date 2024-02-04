@@ -19,6 +19,8 @@ public class MovieColumns
     public DateTime ReleaseDate { get; set; }
     [DisplayName("Runtime in Minutes"), Width(150), AlignCenter]
     public int Runtime { get; set; }
+    [Width(70), QuickFilter]
+    public string GenreName { get; set; }
 
     public MovieKind Kind { get; set; }
 }
