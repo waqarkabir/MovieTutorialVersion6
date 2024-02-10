@@ -20,6 +20,6 @@ public class MovieColumns
     [DisplayName("Runtime in Minutes"), Width(150), AlignCenter]
     public int Runtime { get; set; }
     public MovieKind Kind { get; set; }
-    [Width(200), GenreListFormatter]
+    [Width(200), GenreListFormatter, QuickFilter]
     public List<int> GenreList { get; set; }
 }
