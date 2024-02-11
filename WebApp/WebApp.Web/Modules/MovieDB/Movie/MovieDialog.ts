@@ -1,6 +1,7 @@
-﻿import { MovieForm, MovieRow, MovieService } from '@/ServerTypes/MovieDB';
+import { MovieForm, MovieRow, MovieService } from '@/ServerTypes/MovieDB';
 import { Decorators, EntityDialog } from '@serenity-is/corelib';
 
+@Decorators.panel()
 @Decorators.registerClass('WebApp.MovieDB.MovieDialog')
 export class MovieDialog extends EntityDialog<MovieRow, any> {
     protected getFormKey() { return MovieForm.formKey; }

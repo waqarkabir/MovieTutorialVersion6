@@ -52,6 +52,9 @@ public sealed class MovieRow : Row<MovieRow.RowFields>, IIdRow, INameRow
     [DisplayName("Genres"), LookupEditor(typeof(GenreRow) , Multiple = true), NotMapped]
     [LinkingSetRelation(typeof(MovieGenresRow), nameof(MovieGenresRow.MovieId) , nameof(MovieGenresRow.GenreId))]
     public List<int> GenreList { get => fields.GenreList[this]; set => fields.GenreList[this] = value; }
+
+    [DisplayName("Cast List"), NotMapped]
+    public List<MovieCastRow> CastList { get => fields.CastList[this]; set => fields.CastList[this] = value; }
     public class RowFields : RowFieldsBase
     {
         public Int32Field MovieId;
@@ -63,6 +66,7 @@ public sealed class MovieRow : Row<MovieRow.RowFields>, IIdRow, INameRow
         public Int32Field Runtime;
         public EnumField<MovieKind> Kind;
         public ListField<int> GenreList;
+        public RowListField<MovieCastRow> CastList;
         //public Int32Field GenreId;
         //public StringField GenreName;
 
