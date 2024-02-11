@@ -13,15 +13,4 @@ public class MovieRetrieveHandler : RetrieveRequestHandler<MyRow, MyRequest, MyR
             : base(context)
     {
     }
-
-    protected override void OnReturn()
-    {
-        base.OnReturn();
-
-        var mc = MovieCastRow.Fields;
-        Row.CastList = Connection.List<MovieCastRow>(q => q
-        .SelectTableFields()
-        .Select(mc.PersonFullName)
-        .Where(mc.MovieId == Row.MovieId.Value));
-    }
 }

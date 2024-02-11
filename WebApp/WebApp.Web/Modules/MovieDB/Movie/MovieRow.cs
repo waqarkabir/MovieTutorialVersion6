@@ -5,6 +5,7 @@ using Serenity.Data.Mapping;
 using System;
 using System.ComponentModel;
 using WebApp.Modules.MovieDB.Movie;
+using WebApp.MovieDB.Columns;
 
 namespace WebApp.MovieDB;
 
@@ -53,6 +54,7 @@ public sealed class MovieRow : Row<MovieRow.RowFields>, IIdRow, INameRow
     [LinkingSetRelation(typeof(MovieGenresRow), nameof(MovieGenresRow.MovieId) , nameof(MovieGenresRow.GenreId))]
     public List<int> GenreList { get => fields.GenreList[this]; set => fields.GenreList[this] = value; }
 
+    [MasterDetailRelation(foreignKey: nameof(MovieCastRow.MovieId),ColumnsType = typeof(MovieCastColumns))]
     [DisplayName("Cast List"), NotMapped]
     public List<MovieCastRow> CastList { get => fields.CastList[this]; set => fields.CastList[this] = value; }
     public class RowFields : RowFieldsBase
