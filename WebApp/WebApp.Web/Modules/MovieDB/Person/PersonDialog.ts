@@ -1,4 +1,4 @@
-﻿import { PersonForm, PersonRow, PersonService } from '@/ServerTypes/MovieDB';
+import { PersonForm, PersonRow, PersonService } from '@/ServerTypes/MovieDB';
 import { Decorators, EntityDialog } from '@serenity-is/corelib';
 
 @Decorators.registerClass('WebApp.MovieDB.PersonDialog')
@@ -8,4 +8,10 @@ export class PersonDialog extends EntityDialog<PersonRow, any> {
     protected getService() { return PersonService.baseUrl; }
 
     protected form = new PersonForm(this.idPrefix);
+
+    protected afterLoadEntity() {
+        super.afterLoadEntity();
+
+        this.form.MoviesGrid.personId = this.entityId;
+    }
 }
